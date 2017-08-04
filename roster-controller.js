@@ -16,20 +16,42 @@ function RosterController() {
         // draw()
     }
 
-    function drawList() {
+    function drawList(results) {
         var template = ''
-        template += `
-                <div class="player-card">
-                    <img src="http://s.nflcdn.com/static/content/public/image/fantasy/transparent/200x200/" alt="nfl placeholder imgage">
-                    <h3>Name</h3>
-                    <h4>Postition</h4>
-                    <h4>Team</h4>
-                </div>
+
+        for (var i = 0; i < results.length; i++) {
+            var player = results[i]
+            template += `
+                <tr>
+                    <td>${player.fullname}<button onclick="app.controllers.rosterController.addPlayer(${player.id})" type="button" class="btn btn-primary">Add Player</button></td>
+                </tr>
                 `
-        document.getElementById('draw-serach-query').innerHTML = template
+        }
+        document.getElementById('search-results').innerHTML = template
     }
 
+    function drawRoster(roster) {
+        var template = ''
+        for (var i = 0; i < roster.length; i++) {
+            var obj = roster[i]
+            template += `
+                <div class="player-roster">
+                    <div class="player-card">
+                        <img src="${obj[0].photo}" alt="picture of ${obj[0].fullname}">
+                        <h3>${obj[0].fullname}</h3>
+                        <h4>${obj[0].position}</h4>
+                        <h4>${obj[0]['pro_team']}</h4>
+                    </div>
+                </div>
+            
+            `
+        }
+        document.getElementById('draw-search-query').innerHTML = template
+    }
 
+    this.addPlayer = function (id) {
+        rosterService.addPlayer(id, drawRoster)
+    }
 
 
 

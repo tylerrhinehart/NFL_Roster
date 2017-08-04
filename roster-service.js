@@ -1,6 +1,8 @@
 function RosterService(endpointUri, callback) {
 
+    var rosterService = this
     var playersData = [];
+    var playerRoster = []
 
     this.getPlayersByTeam = function (teamName) {
         playersData.filter(function (player) {
@@ -48,18 +50,28 @@ function RosterService(endpointUri, callback) {
     loadPlayersData(); //call the function above every time we create a new service
 
     this.search = function (searchQuery, cb) {
-        var target
+        var results = []
         for (var i = 0; i < playersData.length; i++) {
             var obj = Object.keys(playersData[i])
             for (var j = 0; j < obj.length; j++) {
-                // console.log(playersData[i][obj[j]])
                 if (playersData[i][obj[j]] == searchQuery) {
-                    target = playersData[i][obj[j]]
-                    cb()
+                    results.push(playersData[i])
+
                 }
             }
         }
-        console.log(target)
+        cb(results)
+        return results
+    }
+
+    this.addPlayer = function (id, cb) {
+        var player = rosterService.search(id, addToRoster)
+        var roster = JSON.parse(JSON.stringify(playerRoster))
+        cb(roster)
+    }
+
+    function addToRoster(results) {
+        playerRoster.push(results)
     }
 
 }
