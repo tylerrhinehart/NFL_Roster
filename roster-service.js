@@ -70,9 +70,9 @@ function RosterService(endpointUri, callback) {
         cb(roster)
     }
 
-    this.remove = function(id, cb) {
-        for(var i = 0; i < playerRoster.length; i++) {
-            if(playerRoster[i][0].id == id) {
+    this.remove = function (id, cb) {
+        for (var i = 0; i < playerRoster.length; i++) {
+            if (playerRoster[i][0].id == id) {
                 playerRoster.splice(i)
             }
         }
@@ -81,13 +81,14 @@ function RosterService(endpointUri, callback) {
     }
 
     function addToRoster(results) {
-        if (playerRoster.length > 12) {
-            return
+        for (var i = 0; i < playerRoster.length; i++) {
+            if ((playerRoster[i][0].id == results[0].id) || playerRoster.length > 12) {
+                return
+            }
         }
-        else {
-            playerRoster.push(results)
-        }
+        playerRoster.push(results)
     }
+
 
     var filterdByTeam = playersData.filter(function (player) {
         // console.log(player)
@@ -95,6 +96,6 @@ function RosterService(endpointUri, callback) {
             return true
         }
     })
-    
+
 
 }
