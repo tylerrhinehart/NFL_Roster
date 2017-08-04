@@ -71,7 +71,12 @@ function RosterService(endpointUri, callback) {
     }
 
     function addToRoster(results) {
-        playerRoster.push(results)
+        if (playerRoster.length > 12) {
+            return
+        }
+        else {
+            playerRoster.push(results)
+        }
     }
 
 }

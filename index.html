@@ -10,44 +10,38 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="row header">
         <div class="col-xs-12">
             <h1>My NFL Roster</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <form class="form-inline" onsubmit="app.controllers.rosterController.search(event)">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="Search Player, Team, Position" />
-                    <button type="submit" class="btn btn-primary" id="query">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
     <div class="container">
-        <div class="panel">
-            <div class="player-roster">
-                <div class="player-card">
-                    <img src="http://s.nflcdn.com/static/content/public/image/fantasy/transparent/200x200/" alt="nfl placeholder imgage">
-                    <h3>Name</h3>
-                    <h4>Postition</h4>
-                    <h4>Team</h4>
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="panel">
+                    <div class="my-team" id="draw-search-query">
+                        <h2>Search for players and add them to your roster</h2>
+                    </div>
                 </div>
             </div>
-            <div class="my-team" id="draw-search-query">
+            <div class="col-xs-3" id="sidebar">
+                <form class="form-inline" onsubmit="app.controllers.rosterController.search(event)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Search Player, Team, Position" />
+                        <button type="submit" class="btn btn-primary" id="query">Search</button>
+                    </div>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="search-results">
 
+                    </tbody>
+                </table>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                    </tr>
-                </thead>
-                <tbody id="search-results">
-                
-                </tbody>
-            </table>
         </div>
     </div>
 
