@@ -70,6 +70,16 @@ function RosterService(endpointUri, callback) {
         cb(roster)
     }
 
+    this.remove = function(id, cb) {
+        for(var i = 0; i < playerRoster.length; i++) {
+            if(playerRoster[i][0].id == id) {
+                playerRoster.splice(i)
+            }
+        }
+        var roster = JSON.parse(JSON.stringify(playerRoster))
+        cb(roster)
+    }
+
     function addToRoster(results) {
         if (playerRoster.length > 12) {
             return
@@ -78,5 +88,13 @@ function RosterService(endpointUri, callback) {
             playerRoster.push(results)
         }
     }
+
+    var filterdByTeam = playersData.filter(function (player) {
+        // console.log(player)
+        if (player['pro_team'] == "SF") {
+            return true
+        }
+    })
+    
 
 }

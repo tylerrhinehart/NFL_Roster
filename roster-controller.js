@@ -41,8 +41,10 @@ function RosterController() {
                         <h3>${obj[0].fullname}</h3>
                         <h4>${obj[0].position}</h4>
                         <h4>${obj[0]['pro_team']}</h4>
+                        <button type="button" class="btn btn-danger" onclick="app.controllers.rosterController.remove(${obj[0].id})">Remove</button>
                     </div>
                 </div>
+                
             
             `
         }
@@ -53,7 +55,9 @@ function RosterController() {
         rosterService.addPlayer(id, drawRoster)
     }
 
-
+    this.remove = function(id) {
+        rosterService.remove(id, drawRoster)
+    }
 
 
     // $('some-button').on('click', function () {
