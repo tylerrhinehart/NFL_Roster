@@ -1,5 +1,6 @@
 var app = {
-    controller: {
+    controllers: {
         rosterController: new RosterController()
     }
 }
+

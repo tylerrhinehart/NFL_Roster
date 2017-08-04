@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/style.css">
     <title>NFL Roster</title>
 </head>
+
 <body>
-    
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>My NFL Roster</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-inline" onsubmit="app.controllers.rosterController.search(event)">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Search Player, Team, Position" />
+                    <button type="submit" class="btn btn-primary" id="query">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel">
+            <div class="player-roster">
+                <div class="player-card">
+                    <img src="http://s.nflcdn.com/static/content/public/image/fantasy/transparent/200x200/" alt="nfl placeholder imgage">
+                    <h3>Name</h3>
+                    <h4>Postition</h4>
+                    <h4>Team</h4>
+                </div>
+            </div>
+            <div class="my-team">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="roster-service.js"></script>
     <script src="roster-controller.js"></script>
-    <script src="roster-app.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
