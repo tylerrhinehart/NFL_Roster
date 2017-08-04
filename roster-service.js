@@ -1,7 +1,7 @@
 function RosterService(endpointUri, callback) {
 
     var rosterService = this
-    var playersData = [];
+    var playersData = []
     var playerRoster = []
 
     this.getPlayersByTeam = function (teamName) {
@@ -47,7 +47,6 @@ function RosterService(endpointUri, callback) {
             callback()
         });
     }
-    loadPlayersData(); //call the function above every time we create a new service
 
     this.search = function (searchQuery, cb) {
         var results = []
@@ -82,7 +81,7 @@ function RosterService(endpointUri, callback) {
 
     function addToRoster(results) {
         for (var i = 0; i < playerRoster.length; i++) {
-            if ((playerRoster[i][0].id == results[0].id) || playerRoster.length > 12) {
+            if ((playerRoster[i][0].id == results[0].id) || playerRoster.length > 12 || (playerRoster[i][0].position == results[0].position)) {
                 return
             }
         }
@@ -98,4 +97,5 @@ function RosterService(endpointUri, callback) {
     })
 
 
+    loadPlayersData(); //call the function above every time we create a new service
 }
