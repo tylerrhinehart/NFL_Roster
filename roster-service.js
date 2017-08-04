@@ -73,7 +73,7 @@ function RosterService(endpointUri, callback) {
     this.remove = function (id, cb) {
         for (var i = 0; i < playerRoster.length; i++) {
             if (playerRoster[i][0].id == id) {
-                playerRoster.splice(i)
+                playerRoster.splice(i, 1)
             }
         }
         var roster = JSON.parse(JSON.stringify(playerRoster))
