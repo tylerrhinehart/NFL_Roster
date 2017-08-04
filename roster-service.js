@@ -48,15 +48,18 @@ function RosterService(endpointUri, callback) {
     loadPlayersData(); //call the function above every time we create a new service
 
     this.search = function (searchQuery, cb) {
-
+        var target
         for (var i = 0; i < playersData.length; i++) {
             var obj = Object.keys(playersData[i])
             for (var j = 0; j < obj.length; j++) {
-                if (obj[j] == searchQuery) {
+                // console.log(playersData[i][obj[j]])
+                if (playersData[i][obj[j]] == searchQuery) {
+                    target = playersData[i][obj[j]]
                     cb()
                 }
             }
         }
+        console.log(target)
     }
 
 }

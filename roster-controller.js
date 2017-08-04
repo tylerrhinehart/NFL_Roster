@@ -26,7 +26,7 @@ function RosterController() {
                     <h4>Team</h4>
                 </div>
                 `
-        document.getElementsByClassName('player-roster')
+        document.getElementById('draw-serach-query').innerHTML = template
     }
 
 
@@ -39,10 +39,9 @@ function RosterController() {
     // })
 
     this.search = function (e) {
-        debugger
         console.log(e.target.name.value)
         e.preventDefault()
-        var searchQuery = e.target.name.value.toLowerCase()
+        var searchQuery = e.target.name.value
         rosterService.search(searchQuery, drawList)
     }
 }
