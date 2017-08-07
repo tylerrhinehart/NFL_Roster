@@ -2,7 +2,7 @@ function RosterService(endpointUri, callback) {
 
     var rosterService = this
     var playersData = []
-    var playerRoster = []
+    var playerRoster = JSON.parse(localStorage.getItem('my-roster')) || []
 
     this.getPlayersByTeam = function (teamName) {
         playersData.filter(function (player) {
@@ -48,6 +48,10 @@ function RosterService(endpointUri, callback) {
         });
     }
 
+    function saveRoster(){
+        localStorage.setItem('my-roster', JSON.stringify(playerRoster))
+    }
+
     this.search = function (searchQuery, cb) {
         var results = []
         for (var i = 0; i < playersData.length; i++) {
@@ -75,6 +79,7 @@ function RosterService(endpointUri, callback) {
                 playerRoster.splice(i, 1)
             }
         }
+        saveRoster()
         var roster = JSON.parse(JSON.stringify(playerRoster))
         cb(roster)
     }
@@ -86,6 +91,7 @@ function RosterService(endpointUri, callback) {
             }
         }
         playerRoster.push(results)
+        saveRoster()
     }
 
 

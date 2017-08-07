@@ -65,7 +65,6 @@ function RosterController() {
     // })
 
     this.search = function (e) {
-        console.log(e.target.name.value)
         e.preventDefault()
         var searchQuery = e.target.name.value
         rosterService.search(searchQuery, drawList)
