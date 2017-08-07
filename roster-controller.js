@@ -59,14 +59,17 @@ function RosterController() {
         rosterService.remove(id, drawRoster)
     }
 
-
-    // $('some-button').on('click', function () {
-    //     var teamSF = rosterService.getPlayersByTeam("SF");
-    // })
+    function getRoster() {
+        var roster = rosterService.getRoster()
+        drawRoster(roster)
+    }
 
     this.search = function (e) {
         e.preventDefault()
         var searchQuery = e.target.name.value
         rosterService.search(searchQuery, drawList)
     }
+
+    getRoster()
+
 }

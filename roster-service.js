@@ -94,6 +94,11 @@ function RosterService(endpointUri, callback) {
         saveRoster()
     }
 
+    this.getRoster = function() {
+        var roster = JSON.parse(JSON.stringify(playerRoster))
+        return roster
+    }
+
 
     var filterdByTeam = playersData.filter(function (player) {
         // console.log(player)
